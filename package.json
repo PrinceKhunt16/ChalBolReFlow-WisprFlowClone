@@ -1,0 +1,19 @@
+{
+  "name": "chalbolreflow-workspace",
+  "private": true,
+  "scripts": {
+    "install:desktop": "npm --prefix desktop install",
+    "dev": "npm --prefix desktop run dev",
+    "dev:backend": "cd backend && python3 -m app.serve --host 127.0.0.1 --port 48763",
+    "dev:desktop": "npm --prefix desktop run dev",
+    "build": "npm --prefix desktop run build && npm run build:backend",
+    "build:backend": "cd backend && pip3 install -r requirements.txt -r requirements-build.txt && pyinstaller --noconfirm --clean chalbolreflow-backend.spec",
+    "dist": "npm run build && npm --prefix desktop run dist",
+    "dist:mac": "npm run build && npm --prefix desktop run dist:mac",
+    "dist:win": "npm run build && npm --prefix desktop run dist:win",
+    "dist:linux": "npm run build && npm --prefix desktop run dist:linux",
+    "clean": "rm -rf backend/dist backend/build desktop/dist desktop/dist-electron desktop/release",
+    "open": "node scripts/open-app.mjs",
+    "stop": "node scripts/stop-app.mjs"
+  }
+}
