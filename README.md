@@ -1,64 +1,116 @@
-# ChalBolReFlow
+# 🎙️ ChalBolReFlow
+
+An AI-powered desktop voice dictation application built with **Electron**, **React**, and **FastAPI**. Press a shortcut, speak naturally, and instantly convert your speech into polished text using modern LLMs.
+
+---
+
+## 🎥 Demo
+
+> **Click the image below to watch the demo video.**
+
+[![ChalBolReFlow Demo](previews/IMG1.png)](previews/demo.mp4)
+
+---
+
+## 📸 Screenshots
 
 <p align="center">
-  <video src="previews/demo.mp4" width="80%" controls />
-  <img src="previews/IMG1.png" width="80%" />
-  <img src="previews/IMG2.png" width="80%" />
-  <img src="previews/IMG3.png" width="80%" />
-  <img src="previews/IMG4.png" width="80%" />
-  <img src="previews/IMG5.png" width="80%" />
+  <img src="previews/IMG1.png" width="85%" />
+  <br><br>
+  <img src="previews/IMG2.png" width="85%" />
+  <br><br>
+  <img src="previews/IMG3.png" width="85%" />
+  <br><br>
+  <img src="previews/IMG4.png" width="85%" />
+  <br><br>
+  <img src="previews/IMG5.png" width="85%" />
 </p>
 
-## Start the App
+---
 
-1. Install desktop dependencies once:
+# 🚀 Getting Started
+
+## Install Dependencies
+
+From the project root:
 
 ```bash
-cd desktop
-npm install
+npm run install:desktop
 ```
 
-2. Start the desktop app from the project root:
+---
+
+## Run the Application
 
 ```bash
 npm run dev
 ```
 
-The Electron main process starts the FastAPI backend automatically, chooses the configured local port from `app-config.json`, and falls back to a free port if the preferred one is busy.
+This automatically:
 
-3. Add your Groq API key inside the app:
+- Starts the Electron application
+- Launches the FastAPI backend
+- Selects the configured localhost port
+- Falls back to a free port if necessary
 
-Open `Settings` → `AI Provider` → `API Key`, paste your key, then return to Home and start dictation.
+---
 
-The packaged app uses localhost communication only and stores backend data in the user profile instead of the app bundle.
+## Configure Your API Key
 
-If you want to keep the app running after VS Code closes, use the detached launcher instead:
+Open:
+
+**Settings → AI Provider → API Key**
+
+Paste your Groq API key and save.
+
+You're now ready to start dictation.
+
+---
+
+## Run in Background
+
+To launch the application detached from the terminal:
 
 ```bash
 npm run open
 ```
 
-That starts the backend and Electron app in the background and writes logs to the user data directory.
-
-To stop the detached processes later:
+To stop it later:
 
 ```bash
 npm run stop
 ```
 
-You can also run them separately if you want to start only one part:
+---
+
+## Run Backend & Desktop Separately
 
 ```bash
 npm run dev:backend
 npm run dev:desktop
 ```
 
-## Build A Packaged App
+---
 
-To create installable desktop builds:
+# 📦 Build Desktop App
+
+Create production installers:
 
 ```bash
 npm run dist
 ```
 
-That builds the React frontend, freezes the FastAPI backend into a single executable with PyInstaller, bundles that executable into Electron Builder, and emits platform installers.
+Platform-specific builds:
+
+```bash
+npm run dist:mac
+npm run dist:win
+npm run dist:linux
+```
+
+The build process:
+
+- Builds the React frontend
+- Compiles the FastAPI backend using PyInstaller
+- Bundles everything with Electron Builder
+- Produces native desktop installers (`.dmg`, `.exe`, `.AppImage`)
